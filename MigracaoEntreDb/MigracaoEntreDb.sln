@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceMigracaoEntreDb", "ServiceMigracaoEntreDb\ServiceMigracaoEntreDb.csproj", "{87E34C37-4F66-4B3E-AE24-9503CD81FA01}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupMigracaoEntreDb", "SetupMigracaoEntreDb\SetupMigracaoEntreDb.vdproj", "{109B48A8-1A88-473C-903E-6CC9A9C9483B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{87E34C37-4F66-4B3E-AE24-9503CD81FA01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87E34C37-4F66-4B3E-AE24-9503CD81FA01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87E34C37-4F66-4B3E-AE24-9503CD81FA01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87E34C37-4F66-4B3E-AE24-9503CD81FA01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{109B48A8-1A88-473C-903E-6CC9A9C9483B}.Debug|Any CPU.ActiveCfg = Debug
+		{109B48A8-1A88-473C-903E-6CC9A9C9483B}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D3A00F7F-1816-42F8-865B-1A6C1A086CE3}
+	EndGlobalSection
+EndGlobal
