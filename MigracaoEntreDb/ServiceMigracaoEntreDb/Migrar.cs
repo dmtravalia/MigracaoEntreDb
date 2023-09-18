@@ -118,6 +118,9 @@ namespace ServiceMigracaoEntreDb
                         case "Decimal":
                             values.Add(line[item.Key].ToString().Replace(",", "."));
                             break;
+                        case "Boolean":
+                            values.Add((bool)line[item.Key] ? "true" : "false");
+                            break;
                         default:
                             break;
                     }
