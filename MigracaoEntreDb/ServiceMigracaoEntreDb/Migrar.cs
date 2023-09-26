@@ -11,6 +11,13 @@ namespace ServiceMigracaoEntreDb
     {
         public Task Execute(IJobExecutionContext context)
         {
+            var horaInicio = Convert.ToInt32(ConfigurationManager.AppSettings["HoraInicio"]);
+            var horaFim = Convert.ToInt32(ConfigurationManager.AppSettings["HoraFim"]);
+            var horaAtual = DateTime.Now.Hour;
+
+            if(!(horaInicio <= horaAtual && horaAtual <= horaFim))
+                return Task.CompletedTask;
+
             var inserts = BuscarSqlServer();
 
             if (inserts == default)
@@ -125,6 +132,19 @@ namespace ServiceMigracaoEntreDb
                             break;
                     }
                 }
+
+                if(ConfigurationManager.AppSettings["idEmpresa"]?.ToString() != default)
+                {
+                    lineColumn.Add("idEmpresa");
+                    values.Add(ConfigurationManager.AppSettings["idEmpresa"]?.ToString());
+                }
+
+                if (ConfigurationManager.AppSettings["dtRegistro"]?.ToString() == "true")
+                {
+                    lineColumn.Add("dtRegistro");
+                    values.Add(@"'" + (DateTime.Now).ToString("yyyy-MM-dd HH:mm:ss") + @"'");
+                }
+
                 inserts.Add(line["NumeroOrdemServico"].ToString(), String.Format(ConfigurationManager.AppSettings["InsertMySql"].ToString(), String.Join(",", lineColumn), String.Join(",", values)));
                 lineColumn.Clear();
                 values.Clear();
