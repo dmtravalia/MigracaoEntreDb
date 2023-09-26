@@ -37,12 +37,12 @@ namespace ServiceMigracaoEntreDb
                 .Build();
             scheduler.ScheduleJob(jobMigrar, triggerMigrar);
 
-#if DEBUG
-            do
-            {
-                Thread.Sleep(100);
-            } while (true);
-#endif
+//#if DEBUG
+//            do
+//            {
+//                Thread.Sleep(100);
+//            } while (true);
+//#endif
         }
 
         private static void VerificarAcessoMySql()
