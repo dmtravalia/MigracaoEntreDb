@@ -24,7 +24,7 @@ namespace ServiceMigracaoEntreDb
         public static void InsertLog(string mensagem)
         {
             var mysql = new MySql();
-            mysql.Insert(String.Format(ConfigurationManager.AppSettings["LogMySql"].ToString(), mensagem));
+            mysql.Insert(String.Format(ConfigurationManager.AppSettings["LogMySql"].ToString(), mensagem, ConfigurationManager.AppSettings["idEmpresa"]?.ToString()));
             mysql.Fechar();
         }
     }
