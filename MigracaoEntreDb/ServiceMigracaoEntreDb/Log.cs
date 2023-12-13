@@ -21,6 +21,16 @@ namespace ServiceMigracaoEntreDb
             eventLog.WriteEntry(textLog.ToString(), EventLogEntryType.Error);
         }
 
+        public static void LoggarInsert(string insert)
+        {
+            var textLog = new StringBuilder();
+            textLog.AppendLine("Insert: " + insert);
+
+            EventLog eventLog = new EventLog();
+            eventLog.Source = "ServiceMigracaoEntreDb";
+            eventLog.WriteEntry(textLog.ToString(), EventLogEntryType.Information);
+        }
+
         public static void InsertLog(string mensagem)
         {
             var mysql = new MySql();

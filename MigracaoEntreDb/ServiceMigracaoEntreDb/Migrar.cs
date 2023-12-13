@@ -15,7 +15,7 @@ namespace ServiceMigracaoEntreDb
             var horaFim = Convert.ToInt32(ConfigurationManager.AppSettings["HoraFim"]);
             var horaAtual = DateTime.Now.Hour;
 
-            if(!(horaInicio <= horaAtual && horaAtual <= horaFim))
+            if (!(horaInicio <= horaAtual && horaAtual <= horaFim))
                 return Task.CompletedTask;
 
             var inserts = BuscarSqlServer();
@@ -133,7 +133,7 @@ namespace ServiceMigracaoEntreDb
                     }
                 }
 
-                if(ConfigurationManager.AppSettings["idEmpresa"]?.ToString() != default)
+                if (ConfigurationManager.AppSettings["idEmpresa"]?.ToString() != default)
                 {
                     lineColumn.Add("idEmpresa");
                     values.Add(ConfigurationManager.AppSettings["idEmpresa"]?.ToString());
@@ -145,9 +145,13 @@ namespace ServiceMigracaoEntreDb
                     values.Add(@"'" + (DateTime.Now).ToString("yyyy-MM-dd HH:mm:ss") + @"'");
                 }
 
-                inserts.Add(line["NumeroOrdemServico"].ToString(), String.Format(ConfigurationManager.AppSettings["InsertMySql"].ToString(), String.Join(",", lineColumn), String.Join(",", values)));
+                var queryInsert = String.Format(ConfigurationManager.AppSettings["InsertMySql"].ToString(), String.Join(",", lineColumn), String.Join(",", values));
+                inserts.Add(line["NumeroOrdemServico"].ToString(), queryInsert);
                 lineColumn.Clear();
                 values.Clear();
+
+                if (ConfigurationManager.AppSettings["logInsert"]?.ToString() == "true")
+                    Log.LoggarInsert(queryInsert);
             }
 
             return inserts;
