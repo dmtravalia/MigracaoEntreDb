@@ -120,7 +120,7 @@ namespace ServiceMigracaoEntreDb
                             values.Add(@"'" + ((DateTime)line[item.Key]).ToString("yyyy-MM-dd HH:mm:ss") + @"'");
                             break;
                         case "String":
-                            values.Add(@"'" + line[item.Key].ToString() + @"'");
+                            values.Add(@"'" + line[item.Key].ToString().Replace("\"","").Replace("\'", "") + @"'");
                             break;
                         case "Decimal":
                             values.Add(line[item.Key].ToString().Replace(",", "."));
